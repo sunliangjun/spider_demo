@@ -10,7 +10,7 @@ class DoubanSplider(object):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"}
         self.url = "https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&page_limit=50&page_start={}"
 
-    # 获取URL纸质
+    # 获取URL地址
     def parse_url(self):
         url_list = [self.url.format(i) for i in range(20)]
         return url_list
@@ -19,11 +19,6 @@ class DoubanSplider(object):
     def report_url(self, url):
         response = requests.get(url, headers=self.headers)
         return json.loads(response.content.decode())
-
-    # 处理json数据
-    # def json_data_handle(self, response):
-    #     response_list = response["subjects"]
-    #     return j
 
     # 保存数据
     def save_response(self, response, index):
@@ -55,4 +50,3 @@ class DoubanSplider(object):
 if __name__ == '__main__':
     douban_splide = DoubanSplider()
     douban_splide.run()
-    # douban_splide.switch_path()
