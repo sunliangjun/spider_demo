@@ -3,7 +3,7 @@ import os.path
 import json
 
 
-class DoubanSplider(object):
+class DoubanSpider(object):
 
     def __init__(self):
         self.headers = {
@@ -26,6 +26,7 @@ class DoubanSplider(object):
     separators：设置分隔符，在dic = {'a': 1, 'b': 2, 'c': 3}这行代码里可以看到冒号和逗号后面都带了个空格，这也是因为Python的默认格式也是如此，如果不想后面带有空格输出，那就可以设置成separators=(',', ':')，如果想保持原样，可以写成separators=(', ', ': ')
     ensure_ascii=False ：是否显示ascii这个码，默认是ture，改为False 即可
     """
+
     # 保存数据
     def save_response(self, response, index):
         path = "豆瓣电影-第{}页.txt".format(index)
@@ -54,5 +55,5 @@ class DoubanSplider(object):
 
 
 if __name__ == '__main__':
-    douban_splide = DoubanSplider()
+    douban_splide = DoubanSpider()
     douban_splide.run()
